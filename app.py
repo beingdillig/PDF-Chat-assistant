@@ -33,7 +33,6 @@ class QueryRequest(BaseModel):
     query: str
     session_id: str
     top_k: int = 5
-    doc_ids: Optional[List[int]] = None
 
 class QueryResponse(BaseModel):
     answer: str
@@ -97,7 +96,7 @@ async def query(req: QueryRequest, db=Depends(get_db)):
     """Query the RAG system."""
     try:
         # Search vectors
-        results = qdrant.search(req.query, req.top_k, req.doc_ids)
+        results = qdrant.search(req.query, req.top_k)
         
         # Generate answer
         answer = llm_service.generate_answer(req.query, results)

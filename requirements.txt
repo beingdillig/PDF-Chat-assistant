@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+streamlit
+qdrant-client
+psycopg2-binary
+sqlalchemy
+sentence-transformers
+google-generativeai
+pypdf
+python-multipart
+python-dotenv
